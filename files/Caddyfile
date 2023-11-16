@@ -1,0 +1,15 @@
+{
+  on_demand_tls {
+    ask http://stack:8080/version
+  }
+}
+
+https:// {
+  reverse_proxy http://stack:8080
+
+  # On demand TLS
+  tls {
+    protocols tls1.2 tls1.3
+    on_demand
+  }
+}
