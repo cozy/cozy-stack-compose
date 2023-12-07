@@ -1,0 +1,46 @@
+# cozy.yaml for production Docker
+
+host: 0.0.0.0
+port: 8080
+
+admin:
+  host: 0.0.0.0
+  port: 6060
+
+subdomains: {{.Env.COZY_SUBDOMAIN_TYPE}}
+
+couchdb:
+  url: {{.Env.COUCHDB_PROTOCOL}}://{{.Env.COUCHDB_USER}}:{{.Env.COUCHDB_PASSWORD}}@{{.Env.COUCHDB_HOST}}:{{.Env.COUCHDB_PORT}}
+
+fs:
+  url: file:///var/lib/cozy/data
+
+vault:
+  credentials_encryptor_key: /etc/cozy/vault.enc
+  credentials_decryptor_key: /etc/cozy/vault.dec
+
+konnectors:
+  cmd: /usr/local/bin/konnector-node-run.sh
+
+log:
+  level: info
+  syslog: false
+
+registries:
+  default:
+    - https://apps-registry.cozycloud.cc/selfhosted
+    - https://apps-registry.cozycloud.cc/mespapiers
+    - https://apps-registry.cozycloud.cc/banks
+    - https://apps-registry.cozycloud.cc/
+
+mail:
+  noreply_address: noreply@{{.Env.DOMAIN}}
+  noreply_name: My Cozy
+  host: {{.Env.MAIL_HOST}}
+  port: {{.Env.MAIL_PORT}}
+  username: {{.Env.MAIL_USERNAME}}
+  password: {{.Env.MAIL_PASSWORD}}
+  disable_tls: {{.Env.MAIL_DISABLE_TLS}}
+  use_ssl: {{.Env.MAIL_USE_SSL}}
+  skip_certificate_validation: {{.Env.MAIL_SKIP_CERTIFICATE_VALIDATION}}
+  local_name: {{.Env.MAIL_LOCAL_NAME}}
