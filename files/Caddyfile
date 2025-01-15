@@ -4,8 +4,42 @@
   }
 }
 
-https:// {
+# Cozy stack
+https://*.cozy.self-data.alpha.grandlyon.com {
   reverse_proxy http://stack:8080
+
+  # On demand TLS
+  tls {
+    protocols tls1.2 tls1.3
+    on_demand
+  }
+}
+
+# Kanban indicators
+https://factory.self-data.alpha.grandlyon.com {
+  reverse_proxy http://host.docker.internal:8050
+
+  # On demand TLS
+  tls {
+    protocols tls1.2 tls1.3
+    on_demand
+  }
+}
+
+# DASIM Kanban indicators
+https://factory-dasim.self-data.alpha.grandlyon.com {
+  reverse_proxy http://host.docker.internal:8051
+
+  # On demand TLS
+  tls {
+    protocols tls1.2 tls1.3
+    on_demand
+  }
+}
+
+# Grafana
+https://grafana.self-data.alpha.grandlyon.com {
+  reverse_proxy http://host.docker.internal:3000
 
   # On demand TLS
   tls {

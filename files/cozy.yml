@@ -44,3 +44,11 @@ mail:
   use_ssl: {{.Env.MAIL_USE_SSL}}
   skip_certificate_validation: {{.Env.MAIL_SKIP_CERTIFICATE_VALIDATION}}
   local_name: {{.Env.MAIL_LOCAL_NAME}}
+
+csp_allowlist:
+  style: https:/fonts.googleapis.com/
+  font: https://fonts.gstatic.com/
+  img: https://statweb.grandlyon.com/
+  script: https://grandlyon.errors.cozycloud.cc/ https://statweb.grandlyon.com/
+  frame: https://statweb.grandlyon.com/
+  connect: https://grandlyon.errors.cozycloud.cc/ https://fonts.gstatic.com/

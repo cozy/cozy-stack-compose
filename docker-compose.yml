@@ -1,4 +1,3 @@
-version: "3.8"
 name: cozy
 
 services:
@@ -21,6 +20,8 @@ services:
       timeout: 5s
       retries: 3
       start_period: 30s
+    ports:
+      - "5984:5984"
 
   # Cozy Stack
   stack:
@@ -36,6 +37,10 @@ services:
       timeout: 5s
       retries: 3
       start_period: 30s
+    logging:
+      driver: loki
+      options:
+        loki-url: http://localhost:3100/loki/api/v1/push
     volumes:
       - ./volumes/cozy-stack/data:/var/lib/cozy/data
       - ./volumes/cozy-stack/config:/etc/cozy/
@@ -57,3 +62,5 @@ services:
       - "80:80"
       - "443:443"
       - "443:443/udp"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

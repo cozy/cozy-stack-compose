@@ -1,5 +1,9 @@
 # cozy-stack docker compose
 
+## Why this fork?
+
+This fork contains specific changes related to running Ecolyo on our servers.
+
 ## About Cozy and cozy-stack
 
 ![Cozy Logo](https://cdn.rawgit.com/cozy/cozy-guidelines/master/templates/cozy_logo_small.svg)
@@ -10,7 +14,7 @@ easily, providing you with a new experience. You can install Cozy on your own
 hardware where no one profiles you.
 
 Cozy-stack is the core server of the Cozy platform. It consists of a single
-process, *the Cozy stack*.
+process, _the Cozy stack_.
 
 [Full Cozy-Stack documentation here](https://docs.cozy.io/en/cozy-stack/).
 
