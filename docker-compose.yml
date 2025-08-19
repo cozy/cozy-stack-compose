@@ -21,6 +21,9 @@ services:
       timeout: 5s
       retries: 3
       start_period: 30s
+    pids_limit: 100
+    ulimits:
+      nofile: 65536
 
   # Cozy Stack
   stack:
